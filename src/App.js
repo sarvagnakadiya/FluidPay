@@ -102,7 +102,7 @@ function App() {
                   />
                 }
               />
-              <Route path="/browse" element={<Browse />} />
+              <Route path="/browse/:id" element={<Browse />} />
               <Route path="/register" element={<Register />} />
               <Route path="/transaction" element={<Transaction />} />
               <Route path="/fetch-data" element={<FetchData />} />

@@ -11,7 +11,7 @@ import {
 } from "wagmi";
 import { Framework } from "@superfluid-finance/sdk-core";
 import fluidPay_api from "../artifacts/fluidPay.json";
-import { useLocation, useParams } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 
 function SinglePage() {
   // const location = useLocation();
@@ -30,6 +30,8 @@ function SinglePage() {
   });
 
   const [data, setData] = useState([]);
+
+  const navigate = useNavigate();
 
   // console.log(location.state);
 
@@ -148,7 +150,7 @@ function SinglePage() {
         {/* <div className="orgs-qr-code">
         <img src="" alt="qr-code" />
       </div> */}
-        <button className="paynow" onClick={() => startStream()}>
+        <button className="paynow" onClick={() => navigate(`/browse/${id}`)}>
           Pay Now
         </button>
       </div>

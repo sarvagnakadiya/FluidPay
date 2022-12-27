@@ -29,25 +29,30 @@
 }
 
 .browse-qr-start {
+  width: 50%;
+  height: auto;
   margin: 100px;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
     rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
   border-radius: 10px;
-  padding-bottom: 10vh;
+  padding-bottom: 15vh;
   background-color: #ffffd1;
 }
 
 .browse-qr-end {
+  width: 50%;
+  height: auto;
   margin: 100px;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
     rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
   border-radius: 10px;
-  padding-bottom: 10vh;
+  padding-bottom: 15vh;
   background-color: #ffffd1;
 }
 
-.browse-qr-img {
-  width: 80%;
+#qrCode {
+  width: 80% !important;
+  height: 100% !important;
 }
 
 .browse-qr-header {
