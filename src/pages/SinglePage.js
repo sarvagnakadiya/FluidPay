@@ -12,9 +12,11 @@ import {
 import { Framework } from "@superfluid-finance/sdk-core";
 import fluidPay_api from "../artifacts/fluidPay.json";
 import { useLocation, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function SinglePage() {
   // const location = useLocation();
+  const navigate = useNavigate();
   const { address } = useAccount();
   const { chain } = useNetwork();
   const provider = useProvider();
@@ -42,7 +44,7 @@ function SinglePage() {
 
     try {
       console.log(data[0].address);
-      console.log(data.charges);
+      console.log(data[0].charges);
       const ethx = await sf.loadSuperToken("ETHx");
       console.log(ethx.address);
       const createFlowOperation = sf.cfaV1.createFlow({
@@ -56,6 +58,17 @@ function SinglePage() {
       console.log("Creating your stream...");
 
       const result = await createFlowOperation.exec(signer);
+      const receipt = await result.wait();
+      if (receipt) {
+        navigate("/transaction", {
+          state: {
+            s_address: address,
+            r_address: data[0].address,
+            charges: data[0].charges,
+            token: ethx.address,
+          },
+        });
+      }
       console.log(result);
 
       console.log(

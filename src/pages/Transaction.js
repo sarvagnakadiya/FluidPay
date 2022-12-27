@@ -1,22 +1,85 @@
-import React from "react";
 import "../styles/transaction.scss";
 import USDC from "../assets/usdc.svg";
+import { useLocation } from "react-router-dom";
+import { Framework } from "@superfluid-finance/sdk-core";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  useProvider,
+  useSigner,
+  useAccount,
+  useNetwork,
+  useContract,
+} from "wagmi";
 
 const Transaction = () => {
+  const provider = useProvider();
+  const { data: signer } = useSigner();
+  const dataFetchedRef = useRef(false);
+
+  useEffect(() => {
+    if (dataFetchedRef.current) return;
+    dataFetchedRef.current = true;
+
+    getflowData();
+  }, []);
+
+  const getflowData = async () => {
+    const sf = await Framework.create({
+      chainId: 5,
+      provider: provider,
+    });
+    const ethx = await sf.loadSuperToken("ETHx");
+    console.log(ethx);
+    console.log(typeof ethx);
+    console.log(signer.getAddress());
+    try {
+      let res = await sf.cfaV1.getFlow({
+        superToken: "0x5943F705aBb6834Cad767e6E4bB258Bc48D9C947",
+        sender: await signer.getAddress(),
+        receiver: "0xbFc4A28D8F1003Bec33f4Fdb7024ad6ad1605AA8",
+        providerOrSigner: signer,
+      });
+      console.log(res);
+      console.log(res.timestamp);
+      console.log(Date.parse(res.timestamp));
+      // return res;
+
+      let res2 = await sf.cfaV1.getNetFlow({
+        superToken: "0x5943F705aBb6834Cad767e6E4bB258Bc48D9C947",
+        account: await signer.getAddress(),
+        providerOrSigner: signer,
+      });
+
+      let res3 = await sf.cfaV1.getAccountFlowInfo({
+        superToken: "0x5943F705aBb6834Cad767e6E4bB258Bc48D9C947",
+        account: await signer.getAddress(),
+        providerOrSigner: signer,
+      });
+      console.log(res);
+      console.log(res2);
+      console.log(res3);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const location = useLocation();
+  console.log(location.state.s_address);
+  console.log(location.state.r_address);
   return (
     <>
       <div className="transcation-main">
-        <h2 className="transaction-header">Total Amount Streamed</h2>
+        <h2 className="transaction-header">Stream started</h2>
         <div className="transaction-top">
           <img className="transaction-img" src={USDC} alt="trasaction" />
-          <h1 className="transaction-top-1">2244.90217</h1>
-          <h2 className="transaction-top-2">USDCx</h2>
+          <h1 className="transaction-top-1">Flowrate</h1>
+          <h2 className="transaction-top-2">
+            {location.state.charges} ETHx(wei) / sec
+          </h2>
         </div>
-        <h4 className="transaction-top-3">$2244.89551 USD</h4>
         <div className="transaction-mid">
           <div className="transaction-send-receive">
             <h3 className="transaction-send-receive-header">Sender</h3>
-            <div>Account Address</div>
+            <div>{location.state.s_address}</div>
           </div>
           <div className="cloud-main">
             <div id="clouds">
@@ -31,7 +94,7 @@ const Transaction = () => {
           </div>
           <div className="transaction-send-receive">
             <h3 className="transaction-send-receive-header">Receiver</h3>
-            <div>Account Address</div>
+            <div>{location.state.r_address}</div>
           </div>
         </div>
         <div className="transaction-mid-bottom">

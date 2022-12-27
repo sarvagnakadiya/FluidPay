@@ -51,7 +51,7 @@ function Register() {
     const receipt = await registerPlatformTx.wait();
     console.log(receipt);
     if (receipt) {
-      navigate("/browse");
+      navigate("/browse", { state: { address: address } });
     }
   };
 
