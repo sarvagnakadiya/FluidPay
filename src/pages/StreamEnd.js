@@ -4,6 +4,7 @@ import { CONTRACT_ADDRESS } from "../config";
 import { useContract, useProvider, useSigner } from "wagmi";
 import React, { useEffect, useRef, useState } from "react";
 import { Framework } from "@superfluid-finance/sdk-core";
+import "../styles/streamend.scss";
 
 function StreamEnd() {
   const provider = useProvider();
@@ -19,6 +20,7 @@ function StreamEnd() {
   });
   const [charges, setCharges] = useState([]);
   const [duration, setDuration] = useState("");
+  const [showRcpt, setRcpt] = useState();
   let metadata = [];
 
   useEffect(() => {
@@ -104,6 +106,7 @@ function StreamEnd() {
            Receiver: 0xbFc4A28D8F1003Bec33f4Fdb7024ad6ad1605AA8`
       );
       if (receipt) {
+        setRcpt(receipt);
         let end = await sf.cfaV1.getAccountFlowInfo({
           superToken: ethx.address,
           account: await signer.getAddress(),
@@ -129,11 +132,15 @@ function StreamEnd() {
   };
 
   return (
-    <div>
-      Stream End
+    <div className="stream-end-main">
+      <h2>Stream End</h2>
       <button onClick={() => deleteStream()}>End Stream</button>
-      <h1>Stream duration: {duration}</h1>
-      <h1>Tokens transferred: {duration * charges}</h1>
+      {showRcpt ? (
+        <>
+          <h2>Stream duration: {duration}</h2>
+          <h2>Tokens transferred: {duration * charges}</h2>
+        </>
+      ) : null}
     </div>
   );
 }

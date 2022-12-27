@@ -29,13 +29,14 @@ function Landing() {
         <img className="home-main-img1" alt="bank" src={HomeImg1} />
         <img className="home-main-img2" alt="cryptoimg" src={HomeImg2} />
         <div className="home-main-mid">
-          <div className="home-main-mid1">Hello</div>
+          {/* <div className="home-main-mid1">Hello</div> */}
           <div className="home-main-mid2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Scan the QR-code and Pay in stream instead of directly sending it
           </div>
 
-          <button className="home-mid-btn">Let's Go!</button>
+          <button className="home-mid-btn" onClick={() => navigate("/explore")}>
+            Let's Go!
+          </button>
           {/* <button onClick={() => navigate("/fetch-data")}>
             Route another page
           </button> */}
