@@ -138,7 +138,7 @@ function Register() {
           <input
             className="register-item-2"
             type="text"
-            placeholder="Charges Per Second"
+            placeholder="Charges Per Second in Wei"
             onChange={(e) =>
               setplatformData({
                 ...platformData,

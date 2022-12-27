@@ -1,6 +1,6 @@
 .transcation-main {
   padding-top: 20vh;
-  height: 100%;
+  height: 100vh;
   background: rgb(83, 36, 65);
   background: linear-gradient(
     270deg,
@@ -16,7 +16,7 @@
 
 .transaction-top {
   display: flex;
-  width: 30%;
+  width: 40%;
   justify-content: space-between;
   margin: 0 auto;
 }
@@ -32,6 +32,7 @@
   margin-left: -3vw;
   color: #fbb03b;
   font-family: "Quicksand_Bold";
+  margin-top: 3vh;
 }
 
 .transaction-top-2 {
@@ -73,6 +74,10 @@
   margin-left: 25%;
   margin-top: -2.5vh;
   font-family: "Quicksand_Bold";
+}
+
+.transaction-send-receive-div {
+  font-size: 15px;
 }
 
 .cloud-main {
@@ -312,13 +317,34 @@
 }
 
 @media only screen and (min-width: 1024px) {
+  .transaction-send-receive {
+    width: auto;
+    height: 15vh;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .transaction-send-receive-header {
+    background-color: #f79368;
+    height: 40%;
+    width: 70%;
+    padding-top: 2px;
+    border-radius: 10px;
+    margin-left: 15%;
+    margin-top: -2.5vh;
+    font-size: medium;
+  }
+
+  .transaction-send-receive-div {
+    font-size: 15px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .transcation-main {
     padding-top: 20vh;
-    height: 150vh;
-    min-height: 200vh;
+    height: 100vh;
+    min-height: auto;
     background: rgb(83, 36, 65);
     background: linear-gradient(
       270deg,
@@ -328,7 +354,7 @@
   }
 
   .transaction-top {
-    width: 90%;
+    width: 50%;
   }
 
   .transaction-img {
@@ -349,6 +375,7 @@
 
   .transaction-send-receive {
     height: 25vh;
+    width: 50vw;
   }
 
   .transaction-send-receive-header {
@@ -360,6 +387,10 @@
     margin-left: 15%;
     margin-top: -2.5vh;
     font-size: medium;
+  }
+
+  .transaction-send-receive-div {
+    font-size: 10px;
   }
 
   .cloud {
@@ -415,23 +446,29 @@
   }
 
   .transaction-img {
-    margin-top: 2vh;
+    margin-top: 1vh;
   }
 
   .transaction-top-1 {
-    font-size: x-large;
+    font-size: medium;
+    padding-top: 3px;
   }
 
   .transaction-top-2 {
-    font-size: larger;
+    font-size: medium;
   }
 
   .transaction-top-3 {
     font-size: larger;
   }
 
+  .transaction-mid {
+    display: grid;
+  }
+
   .transaction-send-receive {
     height: 25vh;
+    width: 80vw;
   }
 
   .transaction-send-receive-header {
@@ -445,8 +482,16 @@
     font-size: medium;
   }
 
+  .transaction-send-receive-div {
+    font-size: 10px;
+  }
+
   .cloud {
-    margin-top: 1vh;
+    display: none;
+  }
+
+  .cloud-main {
+    display: none;
   }
 
   .transaction-bottom {

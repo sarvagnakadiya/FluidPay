@@ -23,19 +23,19 @@ function Landing() {
     <>
       <div className="home-main">
         <div className="home-main-top">
-          <div className="home-main-top1">LOREM</div>
-          <div className="home-main-top2">IPSUM DOLOR</div>
+          <div className="home-main-top1">Money Flows</div>
+          <div className="home-main-top2">Like Water</div>
         </div>
         <img className="home-main-img1" alt="bank" src={HomeImg1} />
         <img className="home-main-img2" alt="cryptoimg" src={HomeImg2} />
         <div className="home-main-mid">
-          <div className="home-main-mid1">Lorem</div>
+          <div className="home-main-mid1">Hello</div>
           <div className="home-main-mid2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </div>
 
-          <button className="home-mid-btn">Button</button>
+          <button className="home-mid-btn">Let's Go!</button>
           {/* <button onClick={() => navigate("/fetch-data")}>
             Route another page
           </button> */}
