@@ -11,8 +11,10 @@ import {
   useContract,
 } from "wagmi";
 import fluidPay_api from "../artifacts/fluidPay.json";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+  const navigate = useNavigate();
   console.log(CONTRACT_ADDRESS);
   const provider = useProvider();
   const { data: signer } = useSigner();
@@ -48,6 +50,9 @@ function Register() {
     );
     const receipt = await registerPlatformTx.wait();
     console.log(receipt);
+    if (receipt) {
+      navigate("/browse");
+    }
   };
 
   useEffect(() => {

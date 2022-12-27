@@ -41,12 +41,14 @@ function SinglePage() {
     });
 
     try {
+      console.log(data[0].address);
+      console.log(data.charges);
       const ethx = await sf.loadSuperToken("ETHx");
       console.log(ethx.address);
       const createFlowOperation = sf.cfaV1.createFlow({
-        flowRate: "1000",
+        flowRate: data[0].charges,
         sender: address,
-        receiver: "0xbFc4A28D8F1003Bec33f4Fdb7024ad6ad1605AA8",
+        receiver: data[0].address,
         superToken: ethx.address,
         // userData?: string
       });
