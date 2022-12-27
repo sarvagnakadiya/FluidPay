@@ -120,8 +120,8 @@ function StreamEnd() {
     <div>
       Stream End
       <button onClick={() => deleteStream()}>End Stream</button>
-      <h1>{duration}</h1>
-      <h1>{duration * 10000}</h1>
+      <h1>Stream duration: {duration}</h1>
+      <h1>Tokens transferred: {duration * 1000}</h1>
     </div>
   );
 }

@@ -97,7 +97,7 @@ function Browse() {
       console.log(`http://localhost:3000/organization/${metadata_tx[0]}`);
       setUrl(`http://localhost:3000/organization/${metadata_tx[0]}`);
       setEndUrl(
-        `http://localhost:3000/organization/stream-and/${metadata_tx[0]}`
+        `http://localhost:3000/organization/stream-end/${metadata_tx[0]}`
       );
     };
     fetch();

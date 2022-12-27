@@ -36,9 +36,9 @@ function Landing() {
           </div>
 
           <button className="home-mid-btn">Button</button>
-          <button onClick={() => navigate("/fetch-data")}>
+          {/* <button onClick={() => navigate("/fetch-data")}>
             Route another page
-          </button>
+          </button> */}
         </div>
       </div>
     </>
