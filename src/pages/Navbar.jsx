@@ -59,6 +59,11 @@ function Navbar() {
               <div className="navtextstyle">Explore</div>
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to="/platform-profile" className="nav-link">
+              <div className="navtextstyle">My Platform</div>
+            </Link>
+          </li>
 
           {connected ? (
             <>

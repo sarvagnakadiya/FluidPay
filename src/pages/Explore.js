@@ -7,6 +7,7 @@ import { metadata } from "./Landing";
 import fluidPay_api from "../artifacts/fluidPay.json";
 import { CONTRACT_ADDRESS } from "../config";
 import { useContract, useProvider, useSigner } from "wagmi";
+import loading_infinite from "../assets/qrLoading_white.gif";
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -62,7 +63,17 @@ function Home() {
     };
   }, []);
 
-  if (loading) return <div>loading...</div>;
+  if (loading)
+    return (
+      <div>
+        <img
+          className="loading-screen-image"
+          src={loading_infinite}
+          alt="loading"
+        ></img>
+        {/* loading... */}
+      </div>
+    );
   return (
     <>
       <div className="Explore-main">
@@ -101,7 +112,7 @@ function Home() {
                     <p>{item.description}</p>
                   </div>
                   <p className="card-charges">
-                    Charges - <span>{item.charges}</span> ETHx / sec
+                    Charges - <span>{item.charges}</span> Wei(ETHx) / sec
                   </p>
                 </div>
               </div>

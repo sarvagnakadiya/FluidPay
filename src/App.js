@@ -20,6 +20,7 @@ import SinglePage from "./pages/SinglePage";
 import orgs from "./DynamicComponentsData";
 import FetchData from "./pages/FetchData";
 import StreamEnd from "./pages/StreamEnd";
+import PlatformProfile from "./pages/PlatformProfile";
 
 function App() {
   const { chains, provider } = configureChains(
@@ -76,6 +77,7 @@ function App() {
                 element={<WapEnd />}
               /> */}
               <Route path="/explore" element={<Explore />}></Route>
+
               <Route
                 exact
                 path="organization/:id"
@@ -106,6 +108,10 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/transaction" element={<Transaction />} />
               <Route path="/fetch-data" element={<FetchData />} />
+              <Route
+                path="/platform-profile"
+                element={<PlatformProfile />}
+              ></Route>
             </Routes>
           </BrowserRouter>
         </div>

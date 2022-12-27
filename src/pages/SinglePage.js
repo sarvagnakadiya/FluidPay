@@ -13,6 +13,7 @@ import { Framework } from "@superfluid-finance/sdk-core";
 import fluidPay_api from "../artifacts/fluidPay.json";
 import { useLocation, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import loading_infinite from "../assets/qrLoading_white.gif";
 
 function SinglePage() {
   // const location = useLocation();
@@ -139,33 +140,43 @@ function SinglePage() {
     };
   }, []);
 
-  if (!loading)
+  if (loading)
     return (
-      <div className="single-orgs-page">
-        <hr />
-        <div className="orgs-name">
-          <h1>{data[0].name}</h1>
-        </div>
-        <hr />
-        <img className="orgs-image" src={data[0].image} alt="imageofthatorgs" />
-        <hr />
-        <div className="orgs-details">
-          <h4>Address</h4>
-          <p className="orgs-address">{data[0].ph_address}</p>
-          <h4>Description</h4>
-          <p className="orgs-desc">{data[0].description}</p>
-          <h4>
-            Charges - <span className="orgs-charges">{data[0].charges}</span>
-          </h4>
-        </div>
-        {/* <div className="orgs-qr-code">
-        <img src="" alt="qr-code" />
-      </div> */}
-        <button className="paynow" onClick={() => startStream()}>
-          Pay Now
-        </button>
+      <div>
+        <img
+          className="loading-screen-image"
+          src={loading_infinite}
+          alt="loading"
+        ></img>
+        {/* loading... */}
       </div>
     );
+  return (
+    <div className="single-orgs-page">
+      <hr />
+      <div className="orgs-name">
+        <h1>{data[0].name}</h1>
+      </div>
+      <hr />
+      <img className="orgs-image" src={data[0].image} alt="imageofthatorgs" />
+      <hr />
+      <div className="orgs-details">
+        <h4>Address</h4>
+        <p className="orgs-address">{data[0].ph_address}</p>
+        <h4>Description</h4>
+        <p className="orgs-desc">{data[0].description}</p>
+        <h4>
+          Charges - <span className="orgs-charges">{data[0].charges}</span>
+        </h4>
+      </div>
+      {/* <div className="orgs-qr-code">
+        <img src="" alt="qr-code" />
+      </div> */}
+      <button className="paynow" onClick={() => startStream()}>
+        Pay Now
+      </button>
+    </div>
+  );
 }
 
 export default SinglePage;

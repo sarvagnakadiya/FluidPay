@@ -95,9 +95,10 @@ function Browse() {
       console.log("Platforms's metadata");
       //   console.log(metadata);
       console.log(`http://localhost:3000/organization/${metadata_tx[0]}`);
-      setUrl(`http://localhost:3000/organization/${metadata_tx[0]}`);
+      // setUrl(`http://localhost:3000/organization/${metadata_tx[0]}`);    https://fluid-pay.vercel.app/organization/0xcc920c851327AF767b4bf770e3b2C2ea50B90fde
+      setUrl(`https://fluid-pay.vercel.app/organization/${metadata_tx[0]}`);
       setEndUrl(
-        `http://localhost:3000/organization/stream-end/${metadata_tx[0]}`
+        `https://fluid-pay.vercel.app/organization/stream-end/${metadata_tx[0]}`
       );
     };
     fetch();
