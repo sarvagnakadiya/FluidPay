@@ -17,6 +17,7 @@ function StreamEnd() {
     abi: fluidPay_api,
     signerOrProvider: provider,
   });
+  const [charges, setCharges] = useState([]);
   const [duration, setDuration] = useState("");
   let metadata = [];
 
@@ -30,21 +31,29 @@ function StreamEnd() {
 
       let metadata_tx = await connectedContract.getPlatformData(id);
       metadata.push(metadata_tx);
+      console.log(metadata);
+      setCharges(parseInt(metadata[0].platformChargesPerSecond));
+      console.log(parseInt(metadata[0].platformChargesPerSecond));
       console.log(metadata[0].platformAddress);
       console.log(parseInt(metadata_tx[5]));
       console.log(metadata_tx);
       console.log("Platforms's metadata");
+      // setCharges(parseInt(metadata_tx[0].platformChargesPerSecond));
+
+      // setData(metadata_tx);
     };
 
-    // fetch();
-    deleteStream();
+    fetch();
+    // deleteStream();
     return () => {
       dataFetchedRef.current = true;
     };
   }, []);
+
   const deleteStream = async () => {
     console.log(signer);
     console.log(provider);
+    console.log(charges);
     const userAddress = await signer.getAddress();
     console.log(userAddress);
     const sf = await Framework.create({
@@ -68,49 +77,52 @@ function StreamEnd() {
       // setStartTime(Date.parse(start.timestamp));
       const startTime = Date.parse(start.timestamp);
 
-      if (start) {
-        //to delete stream
-        const deleteFlowOperation = sf.cfaV1.deleteFlow({
-          flowRate: "10000",
-          sender: await signer.getAddress(),
-          receiver: id,
-          superToken: ethx.address,
-          // userData?: string
-        });
+      // if (start) {
+      // if (metadata) {
+      // const charges = parseInt(metadata[0].platformChargesPerSecond);
+      // console.log(charges);
+      //to delete stream
+      const deleteFlowOperation = sf.cfaV1.deleteFlow({
+        flowRate: charges,
+        sender: await signer.getAddress(),
+        receiver: id,
+        superToken: ethx.address,
+        // userData?: string
+      });
 
-        console.log("Deleting your stream...");
+      console.log("Deleting your stream...");
 
-        const result = await deleteFlowOperation.exec(signer);
-        const receipt = await result.wait();
-        console.log("transaction completed" + receipt);
+      const result = await deleteFlowOperation.exec(signer);
+      const receipt = await result.wait();
+      console.log("transaction completed" + receipt);
 
-        console.log(
-          `Congrats - you've just deleted your money stream!
+      console.log(
+        `Congrats - you've just deleted your money stream!
            Network: Kovan
            Super Token: DAIx
            Sender: 0xDCB45e4f6762C3D7C61a00e96Fb94ADb7Cf27721
-           Receiver: 0xbFc4A28D8F1003Bec33f4Fdb7024ad6ad1605AA8
-        `
-        );
-        if (receipt) {
-          let end = await sf.cfaV1.getAccountFlowInfo({
-            superToken: "0x5943F705aBb6834Cad767e6E4bB258Bc48D9C947",
-            account: await signer.getAddress(),
-            providerOrSigner: signer,
-          });
-          console.log(end);
-          // console.log("end time:" + Date.parse(end.timestamp));
-          // setEndTime(Date.parse(end.timestamp));
-          const endTime = Date.parse(end.timestamp);
-          console.log("startTime: " + startTime);
-          console.log("endtime: " + endTime);
-          const totalDuration = (endTime - startTime) / 1000;
+           Receiver: 0xbFc4A28D8F1003Bec33f4Fdb7024ad6ad1605AA8`
+      );
+      if (receipt) {
+        let end = await sf.cfaV1.getAccountFlowInfo({
+          superToken: ethx.address,
+          account: await signer.getAddress(),
+          providerOrSigner: signer,
+        });
+        console.log(end);
+        // console.log("end time:" + Date.parse(end.timestamp));
+        // setEndTime(Date.parse(end.timestamp));
+        const endTime = Date.parse(end.timestamp);
+        console.log("startTime: " + startTime);
+        console.log("endtime: " + endTime);
+        const totalDuration = (endTime - startTime) / 1000;
 
-          console.log("---------------------------------");
-          console.log(totalDuration);
-          setDuration(totalDuration);
-        }
+        console.log("---------------------------------");
+        console.log(totalDuration);
+        setDuration(totalDuration);
+        // }
       }
+      // }
     } catch (error) {
       console.error(error);
     }
@@ -121,7 +133,7 @@ function StreamEnd() {
       Stream End
       <button onClick={() => deleteStream()}>End Stream</button>
       <h1>Stream duration: {duration}</h1>
-      <h1>Tokens transferred: {duration * 1000}</h1>
+      <h1>Tokens transferred: {duration * charges}</h1>
     </div>
   );
 }

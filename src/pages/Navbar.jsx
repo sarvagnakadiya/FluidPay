@@ -62,7 +62,7 @@ function Navbar() {
 
           {connected ? (
             <>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link to="/browse" className="nav-link">
                   <div className="navtextstyle">Browse</div>
                 </Link>
@@ -72,7 +72,7 @@ function Navbar() {
                 <Link to="/transaction" className="nav-link">
                   <div className="navtextstyle">Transaction</div>
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <button
                   className="nav-disconnect"
@@ -143,7 +143,7 @@ function Navbar() {
 
               {connected ? (
                 <>
-                  <li>
+                  {/* <li>
                     <span
                       onClick={() => {
                         navigate("/browse");
@@ -163,7 +163,7 @@ function Navbar() {
                     >
                       Transaction
                     </span>
-                  </li>
+                  </li> */}
 
                   <li>
                     <button
