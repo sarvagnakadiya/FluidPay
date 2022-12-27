@@ -192,7 +192,7 @@ function Register() {
           ) : (
             <button
               disabled
-              // className="register-btn"
+              className="register-btn-disabled"
               onClick={() => registerPlatform()}
             >
               Register
