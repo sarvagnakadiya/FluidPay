@@ -26,8 +26,8 @@ function Landing() {
           <div className="home-main-top1">Money Flows</div>
           <div className="home-main-top2">Like Water</div>
         </div>
-        <img className="home-main-img1" alt="bank" src={HomeImg1} />
-        <img className="home-main-img2" alt="cryptoimg" src={HomeImg2} />
+        {/* <img className="home-main-img1" alt="bank" src={HomeImg1} />
+        <img className="home-main-img2" alt="cryptoimg" src={HomeImg2} /> */}
         <div className="home-main-mid">
           {/* <div className="home-main-mid1">Hello</div> */}
           <div className="home-main-mid2">

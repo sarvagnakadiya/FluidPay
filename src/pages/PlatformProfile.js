@@ -35,7 +35,8 @@ function PlatformProfile() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [registered, setRegistered] = useState(true);
-
+  const canvasRef = useRef(null);
+  const [img, setImg] = useState(null);
   const downloadQRCode = (e) => {
     e.preventDefault();
     setUrl("");
@@ -47,6 +48,7 @@ function PlatformProfile() {
 
   const qrcode = (
     <QRCodeCanvas
+      ref={canvasRef}
       id="qrCode"
       value={url}
       size={300}
@@ -163,6 +165,22 @@ function PlatformProfile() {
     };
   }, []);
 
+  const saveImageToLocal = (event) => {
+    let link = event.currentTarget;
+    const a = document.createElement("a");
+    // document.body.appendChild(a);
+    console.log(a);
+    const canvas = document.getElementById("qrCode");
+    var image = canvas.toDataURL("image/png");
+    a.download = "QR";
+    a.href = image;
+    a.click();
+    // setImg(image);
+    // link.setAttribute("download", "canvas.png");
+    // let image = canvasRef.current.toDataURL("image/png");
+    // link.setAttribute("href", image);
+  };
+
   if (loading)
     return (
       <div>
@@ -231,7 +249,14 @@ function PlatformProfile() {
               </div>
             </div>
           </div>
-          <button className="browse-btn">Download QR Code</button>
+          <button
+            id="download_image_link"
+            className="browse-btn"
+            href="download_link"
+            onClick={saveImageToLocal}
+          >
+            Download QR Code
+          </button>
         </div>
       </>
     );
