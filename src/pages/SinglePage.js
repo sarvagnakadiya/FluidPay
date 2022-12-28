@@ -157,8 +157,8 @@ function SinglePage() {
         <h4>Description</h4>
         <p className="orgs-desc">{data[0].description}</p>
         <h4>
-          Charges - <span className="orgs-charges">{data[0].charges}</span>Wei /
-          sec
+          Charges - <span className="orgs-charges">{data[0].charges}</span>{" "}
+          Wei(ETHx) / sec
         </h4>
       </div>
       {/* <div className="orgs-qr-code">
