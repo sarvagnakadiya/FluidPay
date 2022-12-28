@@ -72,16 +72,7 @@ function SinglePage() {
       }
       console.log(result);
 
-      console.log(
-        `Congrats - you've just created a money stream!
-        View Your Stream At: https://app.superfluid.finance/dashboard/0xbFc4A28D8F1003Bec33f4Fdb7024ad6ad1605AA8
-        Network: Goerli
-        Super Token: DAIx
-        Sender: 0xDCB45e4f6762C3D7C61a00e96Fb94ADb7Cf27721
-        
-        FlowRate: 100
-        `
-      );
+      console.log(`Congrats - you've just created a money stream!`);
     } catch (error) {
       console.log(
         "Hmmm, your transaction threw an error. Make sure that this stream does not already exist, and that you've entered a valid Ethereum address!"

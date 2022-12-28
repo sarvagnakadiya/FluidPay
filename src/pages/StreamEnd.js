@@ -98,13 +98,7 @@ function StreamEnd() {
       const receipt = await result.wait();
       console.log("transaction completed" + receipt);
 
-      console.log(
-        `Congrats - you've just deleted your money stream!
-           Network: Kovan
-           Super Token: DAIx
-           Sender: 0xDCB45e4f6762C3D7C61a00e96Fb94ADb7Cf27721
-           Receiver: 0xbFc4A28D8F1003Bec33f4Fdb7024ad6ad1605AA8`
-      );
+      console.log(`Congrats - you've just deleted your money stream!`);
       if (receipt) {
         setRcpt(receipt);
         let end = await sf.cfaV1.getAccountFlowInfo({
