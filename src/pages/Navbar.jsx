@@ -145,6 +145,16 @@ function Navbar() {
                   Explore
                 </span>
               </li>
+              <li>
+                <span
+                  onClick={() => {
+                    navigate("/platform-profile");
+                    setMenu(!menu);
+                  }}
+                >
+                  Explore
+                </span>
+              </li>
 
               {connected ? (
                 <>
