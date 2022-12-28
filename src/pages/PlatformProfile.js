@@ -36,6 +36,7 @@ function PlatformProfile() {
   const [loading, setLoading] = useState(true);
   const [registered, setRegistered] = useState(true);
   const canvasRef = useRef(null);
+  const canvasRef1 = useRef(null);
   const [img, setImg] = useState(null);
   const downloadQRCode = (e) => {
     e.preventDefault();
@@ -58,7 +59,8 @@ function PlatformProfile() {
   );
   const endQrcode = (
     <QRCodeCanvas
-      id="qrCode"
+      ref={canvasRef1}
+      id="qrCode1"
       value={endUrl}
       size={300}
       bgColor={"#fff"}
@@ -165,14 +167,30 @@ function PlatformProfile() {
     };
   }, []);
 
-  const saveImageToLocal = (event) => {
-    let link = event.currentTarget;
+  const saveImageToLocal = () => {
+    // let link = event.currentTarget;
     const a = document.createElement("a");
     // document.body.appendChild(a);
     console.log(a);
     const canvas = document.getElementById("qrCode");
     var image = canvas.toDataURL("image/png");
-    a.download = "QR";
+    a.download = "QR-Start";
+    a.href = image;
+    a.click();
+    // setImg(image);
+    // link.setAttribute("download", "canvas.png");
+    // let image = canvasRef.current.toDataURL("image/png");
+    // link.setAttribute("href", image);
+  };
+
+  const saveImageToLocal1 = () => {
+    // let link = event1.currentTarget;
+    const a = document.createElement("a");
+    // document.body.appendChild(a);
+    console.log(a);
+    const canvas = document.getElementById("qrCode1");
+    var image = canvas.toDataURL("image/png");
+    a.download = "QR-End";
     a.href = image;
     a.click();
     // setImg(image);
@@ -253,7 +271,10 @@ function PlatformProfile() {
             id="download_image_link"
             className="browse-btn"
             href="download_link"
-            onClick={saveImageToLocal}
+            onClick={() => {
+              saveImageToLocal();
+              saveImageToLocal1();
+            }}
           >
             Download QR Code
           </button>
