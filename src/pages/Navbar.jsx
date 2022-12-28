@@ -152,7 +152,7 @@ function Navbar() {
                     setMenu(!menu);
                   }}
                 >
-                  Explore
+                  My platform
                 </span>
               </li>
 
