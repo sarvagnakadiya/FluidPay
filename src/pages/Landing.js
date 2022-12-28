@@ -23,8 +23,11 @@ function Landing() {
     <>
       <div className="home-main">
         <div className="home-main-top">
-          <div className="home-main-top1">Money Flows</div>
-          <div className="home-main-top2">Like Water</div>
+          <div className="home-main-top1">
+            Scan the QR-code and
+            <br></br>pay in stream of tokens
+          </div>
+          {/* <div className="home-main-top2"></div> */}
         </div>
         {/* <img className="home-main-img1" alt="bank" src={HomeImg1} />
         <img className="home-main-img2" alt="cryptoimg" src={HomeImg2} /> */}
