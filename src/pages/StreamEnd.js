@@ -131,8 +131,8 @@ function StreamEnd() {
       <button onClick={() => deleteStream()}>End Stream</button>
       {showRcpt ? (
         <>
-          <h2>Stream duration: {duration}</h2>
-          <h2>Tokens transferred: {duration * charges}</h2>
+          <h2>Stream duration: {duration} seconds</h2>
+          <h2>Tokens transferred: {duration * charges} Wei(ETHx)</h2>
         </>
       ) : null}
     </div>
