@@ -1,7 +1,7 @@
 .home-main {
   padding-top: 20vh;
-  height: 110vh;
-  min-height: 120vh;
+  height: 50vh;
+  min-height: 50vh;
   background: rgb(251, 176, 59);
   background: linear-gradient(
     37deg,
@@ -75,7 +75,7 @@
   font-size: medium;
   cursor: pointer;
   margin-top: 10px;
-  margin-left: 5vw;
+  margin-left: 8vw;
 }
 
 // .home-main-mid-btn {
@@ -99,7 +99,7 @@
 @media only screen and (min-width: 1024px) and (max-width: 1560px) {
   .home-main {
     height: 100%;
-    min-height: 145vh;
+    min-height: 50vh;
   }
 
   .home-main-img1 {
@@ -163,7 +163,7 @@
   }
 
   .home-main-mid {
-    margin-top: 65vh;
+    margin-top: 10vh;
   }
 
   .home-main-mid1 {
@@ -175,7 +175,7 @@
   .home-main-mid2 {
     text-align: left;
     color: #fff;
-    margin-left: 22%;
+    margin-left: 8vw;
     width: 50%;
   }
 
@@ -214,7 +214,7 @@
   }
 
   .home-main-mid {
-    margin-top: 50vh;
+    margin-top: 10vh;
   }
 
   .home-main-mid1 {
