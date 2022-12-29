@@ -21,6 +21,7 @@ import orgs from "./DynamicComponentsData";
 import FetchData from "./pages/FetchData";
 import StreamEnd from "./pages/StreamEnd";
 import PlatformProfile from "./pages/PlatformProfile";
+import Exchange from "./pages/Exchange";
 
 function App() {
   const { chains, provider } = configureChains(
@@ -108,6 +109,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/transaction" element={<Transaction />} />
               <Route path="/fetch-data" element={<FetchData />} />
+              <Route path="/exchange" element={<Exchange />} />
               <Route
                 path="/platform-profile"
                 element={<PlatformProfile />}

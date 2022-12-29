@@ -64,6 +64,11 @@ function Navbar() {
               <div className="navtextstyle">My Platform</div>
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to="/exchange" className="nav-link">
+              <div className="navtextstyle">Exchange</div>
+            </Link>
+          </li>
 
           {connected ? (
             <>
