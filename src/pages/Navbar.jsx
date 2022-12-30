@@ -160,6 +160,16 @@ function Navbar() {
                   My platform
                 </span>
               </li>
+              <li>
+                <span
+                  onClick={() => {
+                    navigate("/exchange");
+                    setMenu(!menu);
+                  }}
+                >
+                  Exchange
+                </span>
+              </li>
 
               {connected ? (
                 <>

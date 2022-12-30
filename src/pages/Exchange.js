@@ -32,11 +32,14 @@ const Exchange = () => {
                 <img className="exchange-img1" src={Etherium} />
                 <div className="exchange-word">ETH</div>
               </div>
+
               <div className="exchange-box2">
                 <input className="exchange-text" type="Text" />
                 <img className="exchange-img2" src={Etherium} />
                 <div className="exchange-word">ETHx</div>
               </div>
+              <h2>1 ETH = 1 ETHx</h2>
+              <button className="exchange-btn">Wrap</button>
             </div>
           </Content>
           <Content active={active === 1}>
@@ -51,6 +54,8 @@ const Exchange = () => {
                 <img className="exchange-img2" src={Etherium} />
                 <div className="exchange-word">ETH</div>
               </div>
+              <h2>1 ETHx = 1 ETH</h2>
+              <button className="exchange-btn">Unwrap</button>
             </div>
           </Content>
         </>
