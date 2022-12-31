@@ -8,6 +8,8 @@ import fluidPay_api from "../artifacts/fluidPay.json";
 import { CONTRACT_ADDRESS } from "../config";
 import { useContract, useProvider, useSigner } from "wagmi";
 import loading_infinite from "../assets/qrLoading_white.gif";
+import { ethers } from "ethers";
+import Web3 from "web3";
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -112,7 +114,12 @@ function Home() {
                     <p>{item.description}</p>
                   </div>
                   <p className="card-charges">
-                    Charges - <span>{item.charges}</span> Wei(ETHx) / sec
+                    Charges -{" "}
+                    <span>
+                      {Web3.utils.fromWei(`${item.charges * 60}`, "ether")}
+                      {/* {ethers.utils.parseEther(toString(item.charges * 60))} */}
+                    </span>{" "}
+                    ETHx / hour
                   </p>
                 </div>
               </div>

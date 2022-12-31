@@ -5,6 +5,7 @@ import { useContract, useProvider, useSigner } from "wagmi";
 import React, { useEffect, useRef, useState } from "react";
 import { Framework } from "@superfluid-finance/sdk-core";
 import "../styles/streamend.scss";
+import Web3 from "web3";
 
 function StreamEnd() {
   const provider = useProvider();
@@ -131,8 +132,16 @@ function StreamEnd() {
       <button onClick={() => deleteStream()}>End Stream</button>
       {showRcpt ? (
         <>
-          <h2>Stream duration: {duration} seconds</h2>
-          <h2>Tokens transferred: {duration * charges} Wei(ETHx)</h2>
+          <h2>
+            Stream duration: <br></br>
+            {duration / 60} minutes
+          </h2>
+          {/* <h2>Stream duration:</h2> */}
+
+          <h2>
+            Tokens transferred: <br></br>
+            {Web3.utils.fromWei(`${duration * charges * 60}`, "ether")} ETHx
+          </h2>
         </>
       ) : null}
     </div>

@@ -10,6 +10,7 @@ import {
   useNetwork,
   useContract,
 } from "wagmi";
+import Web3 from "web3";
 
 const Transaction = () => {
   const provider = useProvider();
@@ -73,7 +74,9 @@ const Transaction = () => {
           <img className="transaction-img" src={ETH} alt="trasaction" />
           <h1 className="transaction-top-1">Flowrate</h1>
           <h2 className="transaction-top-2">
-            {location.state.charges} ETHx(wei) / sec
+            {Web3.utils.fromWei(`${location.state.charges * 60}`, "ether")} ETHx
+            / hour
+            {/* {location.state.charges} ETHx(wei) / sec */}
           </h2>
         </div>
         <div className="transaction-mid">

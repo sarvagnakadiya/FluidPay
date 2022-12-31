@@ -12,6 +12,7 @@ import {
 } from "wagmi";
 import fluidPay_api from "../artifacts/fluidPay.json";
 import { useNavigate } from "react-router-dom";
+import { ethers } from "ethers";
 
 function Register() {
   const navigate = useNavigate();
@@ -24,6 +25,10 @@ function Register() {
   const heroImage = useRef(null);
   const inputRef = useRef(null);
 
+  // const num = "1";
+  // const num2 = ethers.utils.parseEther(num);
+  // console.log(parseInt(num2));
+
   //platform details useStates
   // const [platformAddress, setPlatformAddress] = useState("");
   // const [platformName, setPlatformName] = useState("");
@@ -31,6 +36,8 @@ function Register() {
   // const [platformPhysicalAddress, setPlatformPhysicalAddress] = useState("");
   // const [platformChargesPerSecond, setPlatformChargesPerSecond] = useState("");
   const [platformData, setplatformData] = useState([]);
+  // const [parseValue, setParseValue] = useState([]);
+  // setParseValue(ethers.utils.parseEther("1000"));
 
   const connectedContract = useContract({
     address: CONTRACT_ADDRESS,
@@ -138,11 +145,13 @@ function Register() {
           <input
             className="register-item-2"
             type="text"
-            placeholder="Charges Per Second in Wei"
+            placeholder="Enter charges per hour in ETH"
             onChange={(e) =>
               setplatformData({
                 ...platformData,
-                platformChargesPerSecond: e.target.value,
+                platformChargesPerSecond: Math.ceil(
+                  parseInt(ethers.utils.parseEther(`${e.target.value}`)) / 60
+                ),
               })
             }
           />
@@ -184,6 +193,11 @@ function Register() {
               hidden
             />
           </div>
+          {platformData.platformChargesPerSecond ? (
+            <h2>{platformData.platformChargesPerSecond} Wei / sec</h2>
+          ) : (
+            <h2>0 Wei / sec</h2>
+          )}
 
           {platformData.platformImage ? (
             <button className="register-btn" onClick={() => registerPlatform()}>
