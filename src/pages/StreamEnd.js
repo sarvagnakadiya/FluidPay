@@ -128,7 +128,7 @@ function StreamEnd() {
 
   return (
     <div className="stream-end-main">
-      <h2>Stream End</h2>
+      <h2>Stream End?</h2>
       <button onClick={() => deleteStream()}>End Stream</button>
       {showRcpt ? (
         <>
